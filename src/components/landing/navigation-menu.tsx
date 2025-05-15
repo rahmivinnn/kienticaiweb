@@ -83,25 +83,26 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0A0E1A]/95 backdrop-blur-md shadow-sm'
-          : 'bg-[#0A0E1A]'
+          ? 'bg-[#00052E]/95 backdrop-blur-md shadow-sm'
+          : 'bg-[#00052E]'
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-14 md:h-16">
           {/* Logo */}
           <Logo
             variant="white"
-            size="md"
+            size="sm"
+            className="scale-90"
           />
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`px-2 py-1 text-sm font-medium transition-colors ${
                   isScrolled
                     ? 'text-white hover:text-blue-300'
                     : 'text-white hover:text-blue-300'
@@ -200,21 +201,21 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
           </nav>
 
           {/* Auth Buttons */}
-          <div className="hidden md:flex items-center space-x-2">
+          <div className="hidden md:flex items-center space-x-3">
             <Button
               variant="ghost"
-              size="sm"
-              className="text-white hover:text-blue-300"
+              size="xs"
+              className="text-white hover:text-blue-300 px-2 py-1"
               onClick={onSignInClick}
             >
-              Sign In
+              Sign in
             </Button>
             <Button
-              size="sm"
-              className="bg-blue-500 hover:bg-blue-600 text-white"
+              size="xs"
+              className="bg-[#0047AB] hover:bg-blue-700 text-white px-3 py-1"
               onClick={onSignUpClick}
             >
-              Sign Up
+              Sign up
             </Button>
           </div>
 
@@ -240,7 +241,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#0A0E1A] shadow-lg"
+            className="md:hidden bg-[#00052E] shadow-lg"
           >
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col space-y-2">
@@ -341,17 +342,17 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                       closeMenu();
                     }}
                   >
-                    Sign In
+                    Sign in
                   </Button>
                   <Button
                     size="sm"
-                    className="justify-start bg-blue-500 hover:bg-blue-600 text-white"
+                    className="justify-start bg-[#0047AB] hover:bg-blue-700 text-white"
                     onClick={() => {
                       onSignUpClick();
                       closeMenu();
                     }}
                   >
-                    Sign Up
+                    Sign up
                   </Button>
                 </div>
               </nav>
