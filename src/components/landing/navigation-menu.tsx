@@ -83,15 +83,15 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm'
-          : 'bg-white'
+          ? 'bg-[#0A0E1A]/95 backdrop-blur-md shadow-sm'
+          : 'bg-[#0A0E1A]'
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Logo
-            variant="default"
+            variant="white"
             size="md"
           />
 
@@ -103,8 +103,8 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                 href={item.href}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isScrolled
-                    ? 'text-gray-800 hover:text-blue-600'
-                    : 'text-gray-800 hover:text-blue-600'
+                    ? 'text-white hover:text-blue-300'
+                    : 'text-white hover:text-blue-300'
                 }`}
                 onClick={closeMenu}
               >
@@ -204,14 +204,14 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
             <Button
               variant="ghost"
               size="sm"
-              className="text-gray-800 hover:text-blue-600"
+              className="text-white hover:text-blue-300"
               onClick={onSignInClick}
             >
               Sign In
             </Button>
             <Button
               size="sm"
-              className="bg-[#0A0E1A] hover:bg-[#1A2035] text-white"
+              className="bg-blue-500 hover:bg-blue-600 text-white"
               onClick={onSignUpClick}
             >
               Sign Up
@@ -224,7 +224,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
               variant="ghost"
               size="sm"
               onClick={toggleMenu}
-              className="text-gray-800 hover:bg-gray-100"
+              className="text-white hover:bg-white/10"
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -240,7 +240,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white shadow-lg"
+            className="md:hidden bg-[#0A0E1A] shadow-lg"
           >
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col space-y-2">
@@ -248,7 +248,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-gray-100"
+                    className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-white/10"
                     onClick={closeMenu}
                   >
                     {item.icon}
@@ -259,7 +259,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                 {/* Mobile Features Dropdown */}
                 <div>
                   <button
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-gray-100"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-white/10"
                     onClick={() => setFeaturesOpen(!featuresOpen)}
                   >
                     <span className="flex items-center">
@@ -296,7 +296,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                 {/* Mobile Resources Dropdown */}
                 <div>
                   <button
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-gray-100"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-white/10"
                     onClick={() => setResourcesOpen(!resourcesOpen)}
                   >
                     <span className="flex items-center">
@@ -331,11 +331,11 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                 </div>
 
                 {/* Mobile Auth Buttons */}
-                <div className="pt-2 mt-2 border-t border-gray-200 flex flex-col space-y-2">
+                <div className="pt-2 mt-2 border-t border-white/20 flex flex-col space-y-2">
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="justify-start text-gray-800 hover:text-blue-600"
+                    className="justify-start text-white hover:text-blue-300"
                     onClick={() => {
                       onSignInClick();
                       closeMenu();
@@ -345,7 +345,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                   </Button>
                   <Button
                     size="sm"
-                    className="justify-start bg-[#0A0E1A] hover:bg-[#1A2035] text-white"
+                    className="justify-start bg-blue-500 hover:bg-blue-600 text-white"
                     onClick={() => {
                       onSignUpClick();
                       closeMenu();
