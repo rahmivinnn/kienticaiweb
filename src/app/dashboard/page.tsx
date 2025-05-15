@@ -13,21 +13,29 @@ export default function DashboardPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user is authenticated
-    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+    // Check if user data exists
     const userData = localStorage.getItem('user');
-    
-    if (!isAuthenticated) {
-      router.push('/login');
-      return;
-    }
-    
-    if (userData) {
+
+    // If no user data, create a default user
+    if (!userData) {
+      const defaultUser = {
+        id: 'user-' + Math.random().toString(36).substring(2, 9),
+        email: 'guest@example.com',
+        firstName: 'Guest',
+        lastName: 'User'
+      };
+
+      // Store the default user
+      localStorage.setItem('isAuthenticated', 'true');
+      localStorage.setItem('user', JSON.stringify(defaultUser));
+
+      setUser(defaultUser);
+    } else {
       setUser(JSON.parse(userData));
     }
-    
+
     setIsLoading(false);
-  }, [router]);
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('isAuthenticated');
@@ -54,7 +62,7 @@ export default function DashboardPage() {
         <main className="flex-1 overflow-y-auto p-4 md:p-6">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               <Card>
                 <CardHeader className="pb-2">
@@ -66,7 +74,7 @@ export default function DashboardPage() {
                   <Button className="mt-4 w-full">View Exercises</Button>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg">Progress</CardTitle>
@@ -80,7 +88,7 @@ export default function DashboardPage() {
                   <Button className="mt-2 w-full">View Details</Button>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg">Next Appointment</CardTitle>
@@ -92,7 +100,7 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
             </div>
-            
+
             <Card className="mb-6">
               <CardHeader>
                 <CardTitle>Recent Activity</CardTitle>
