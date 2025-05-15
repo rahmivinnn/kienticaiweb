@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/ui/logo';
@@ -28,6 +29,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
   onSignInClick,
   onSignUpClick
 }) => {
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const { isMenuOpen, toggleMenu, closeMenu } = useMenuState();
   const [featuresOpen, setFeaturesOpen] = useState(false);
@@ -206,14 +208,14 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
               variant="ghost"
               size="xs"
               className="text-white hover:text-blue-300 px-2 py-1"
-              onClick={onSignInClick}
+              onClick={() => router.push('/login')}
             >
               Sign in
             </Button>
             <Button
               size="xs"
               className="bg-[#0047AB] hover:bg-blue-700 text-white px-3 py-1"
-              onClick={onSignUpClick}
+              onClick={() => router.push('/login')}
             >
               Sign up
             </Button>
@@ -338,7 +340,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                     size="sm"
                     className="justify-start text-white hover:text-blue-300"
                     onClick={() => {
-                      onSignInClick();
+                      router.push('/login');
                       closeMenu();
                     }}
                   >
@@ -348,7 +350,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                     size="sm"
                     className="justify-start bg-[#0047AB] hover:bg-blue-700 text-white"
                     onClick={() => {
-                      onSignUpClick();
+                      router.push('/login');
                       closeMenu();
                     }}
                   >
