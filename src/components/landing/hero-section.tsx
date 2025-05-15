@@ -45,7 +45,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#0A0E1A] py-16 md:py-24">
+    <section className="relative overflow-hidden bg-white py-16 md:py-24">
       {/* Background pattern - removed for cleaner look */}
 
       {/* Content container */}
@@ -59,7 +59,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             className="text-center lg:text-left"
           >
             <motion.div variants={itemVariants}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
                 Personalized<br />
                 Recovery<br />
                 Powered By<br />
@@ -69,7 +69,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <p className="text-base md:text-lg text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0">
+              <p className="text-base md:text-lg text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
                 Transform your rehabilitation with intelligent movement coaching and data-driven therapy. Our platform bridges home exercises with clinical expertise for a smoother, faster recovery experience.
               </p>
             </motion.div>
@@ -80,7 +80,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             >
               <Button
                 size="lg"
-                className="bg-blue-500 hover:bg-blue-600 text-white"
+                className="bg-[#0A0E1A] hover:bg-[#1A2035] text-white"
                 onClick={onGetStartedClick}
               >
                 Start Your Journey
@@ -89,7 +89,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10"
+                className="border-[#0A0E1A] text-[#0A0E1A] hover:bg-gray-100"
                 onClick={handleWatchDemoClick}
               >
                 Watch Demo
