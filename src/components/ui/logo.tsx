@@ -24,18 +24,15 @@ export function Logo({
     md: { logo: 32, text: 'text-xl' },
     lg: { logo: 48, text: 'text-2xl' }
   };
-  
+
   // Get dimensions based on size
   const dimensions = sizeMap[size];
-  
-  // Text color based on variant
-  const textColor = variant === 'white' ? 'text-white' : 'text-slate-900 dark:text-white';
-  
+
   return (
     <Link href="/landing" className={cn("flex items-center", className)}>
       <div className="relative mr-2" style={{ width: dimensions.logo, height: dimensions.logo }}>
         <Image
-          src="/kinetic-logo.png"
+          src="/kinetic-logo-circle.svg"
           alt="Kinetic AI"
           fill
           className="object-contain"
@@ -47,11 +44,17 @@ export function Logo({
           }}
         />
       </div>
-      
+
       {showText && (
-        <span className={cn("font-bold", dimensions.text, textColor)}>
-          Kinetic AI
-        </span>
+        <div className="relative" style={{ height: dimensions.logo, width: dimensions.logo * 3 }}>
+          <Image
+            src="/kinetic-text-logo.svg"
+            alt="Kinetic"
+            fill
+            className="object-contain object-left"
+            priority
+          />
+        </div>
       )}
     </Link>
   );
