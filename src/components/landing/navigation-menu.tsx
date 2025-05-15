@@ -1,0 +1,368 @@
+"use client";
+
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Logo } from '@/components/ui/logo';
+import {
+  Menu,
+  X,
+  ChevronDown,
+  LogIn,
+  Home,
+  Activity,
+  Info,
+  FileText,
+  MessageSquare,
+  Phone
+} from 'lucide-react';
+import { useMenuState } from '@/lib/hooks/use-menu-state';
+
+interface NavigationMenuProps {
+  onSignInClick: () => void;
+  onSignUpClick: () => void;
+}
+
+const NavigationMenu: React.FC<NavigationMenuProps> = ({
+  onSignInClick,
+  onSignUpClick
+}) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { isMenuOpen, toggleMenu, closeMenu } = useMenuState();
+  const [featuresOpen, setFeaturesOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+
+  // Handle scroll event to change navbar appearance
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        closeMenu();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [closeMenu]);
+
+  // Navigation items
+  const navItems = [
+    { name: 'Home', href: '/landing', icon: <Home className="h-4 w-4 mr-2" /> },
+    { name: 'How It Works', href: '#how-it-works', icon: <Activity className="h-4 w-4 mr-2" /> },
+    { name: 'About', href: '#about', icon: <Info className="h-4 w-4 mr-2" /> },
+    { name: 'Blog', href: '#blog', icon: <FileText className="h-4 w-4 mr-2" /> },
+    { name: 'Contact', href: '#contact', icon: <Phone className="h-4 w-4 mr-2" /> },
+  ];
+
+  // Features submenu items
+  const featuresItems = [
+    { name: 'Pose Detection', href: '#pose-detection' },
+    { name: 'Movement Analysis', href: '#movement-analysis' },
+    { name: 'Progress Tracking', href: '#progress-tracking' },
+    { name: 'AI Feedback', href: '#ai-feedback' },
+  ];
+
+  // Resources submenu items
+  const resourcesItems = [
+    { name: 'Documentation', href: '#documentation' },
+    { name: 'API', href: '#api' },
+    { name: 'Community', href: '#community' },
+    { name: 'Support', href: '#support' },
+  ];
+
+  return (
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <Logo
+            variant={isScrolled ? 'default' : 'white'}
+            size="md"
+          />
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-1">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  isScrolled
+                    ? 'text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+                    : 'text-blue-100 hover:text-white hover:bg-white/10'
+                }`}
+                onClick={closeMenu}
+              >
+                {item.name}
+              </Link>
+            ))}
+
+            {/* Features Dropdown */}
+            <div className="relative">
+              <button
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center ${
+                  isScrolled
+                    ? 'text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+                    : 'text-blue-100 hover:text-white hover:bg-white/10'
+                }`}
+                onClick={() => setFeaturesOpen(!featuresOpen)}
+              >
+                Features
+                <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${featuresOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              <AnimatePresence>
+                {featuresOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-slate-800 ring-1 ring-black ring-opacity-5 z-50"
+                  >
+                    <div className="py-1">
+                      {featuresItems.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+                          onClick={() => {
+                            setFeaturesOpen(false);
+                            closeMenu();
+                          }}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Resources Dropdown */}
+            <div className="relative">
+              <button
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center ${
+                  isScrolled
+                    ? 'text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+                    : 'text-blue-100 hover:text-white hover:bg-white/10'
+                }`}
+                onClick={() => setResourcesOpen(!resourcesOpen)}
+              >
+                Resources
+                <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${resourcesOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              <AnimatePresence>
+                {resourcesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-slate-800 ring-1 ring-black ring-opacity-5 z-50"
+                  >
+                    <div className="py-1">
+                      {resourcesItems.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+                          onClick={() => {
+                            setResourcesOpen(false);
+                            closeMenu();
+                          }}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </nav>
+
+          {/* Auth Buttons */}
+          <div className="hidden md:flex items-center space-x-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              className={isScrolled ? '' : 'text-white hover:bg-white/10'}
+              onClick={onSignInClick}
+            >
+              <LogIn className="h-4 w-4 mr-2" />
+              Sign In
+            </Button>
+            <Button
+              size="sm"
+              onClick={onSignUpClick}
+            >
+              Sign Up
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleMenu}
+              className={isScrolled ? '' : 'text-white hover:bg-white/10'}
+            >
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white dark:bg-slate-900 shadow-lg"
+          >
+            <div className="container mx-auto px-4 py-4">
+              <nav className="flex flex-col space-y-2">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                    onClick={closeMenu}
+                  >
+                    {item.icon}
+                    {item.name}
+                  </Link>
+                ))}
+
+                {/* Mobile Features Dropdown */}
+                <div>
+                  <button
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                    onClick={() => setFeaturesOpen(!featuresOpen)}
+                  >
+                    <span className="flex items-center">
+                      <Activity className="h-4 w-4 mr-2" />
+                      Features
+                    </span>
+                    <ChevronDown className={`h-4 w-4 transition-transform ${featuresOpen ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  <AnimatePresence>
+                    {featuresOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="pl-6 mt-1 space-y-1"
+                      >
+                        {featuresItems.map((item) => (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            className="block px-3 py-2 rounded-md text-sm text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
+                            onClick={closeMenu}
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Mobile Resources Dropdown */}
+                <div>
+                  <button
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                    onClick={() => setResourcesOpen(!resourcesOpen)}
+                  >
+                    <span className="flex items-center">
+                      <FileText className="h-4 w-4 mr-2" />
+                      Resources
+                    </span>
+                    <ChevronDown className={`h-4 w-4 transition-transform ${resourcesOpen ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  <AnimatePresence>
+                    {resourcesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="pl-6 mt-1 space-y-1"
+                      >
+                        {resourcesItems.map((item) => (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            className="block px-3 py-2 rounded-md text-sm text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
+                            onClick={closeMenu}
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Mobile Auth Buttons */}
+                <div className="pt-2 mt-2 border-t border-slate-200 dark:border-slate-700 flex flex-col space-y-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="justify-start"
+                    onClick={() => {
+                      onSignInClick();
+                      closeMenu();
+                    }}
+                  >
+                    <LogIn className="h-4 w-4 mr-2" />
+                    Sign In
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="justify-start"
+                    onClick={() => {
+                      onSignUpClick();
+                      closeMenu();
+                    }}
+                  >
+                    Sign Up
+                  </Button>
+                </div>
+              </nav>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+};
+
+export default NavigationMenu;
