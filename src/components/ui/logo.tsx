@@ -20,9 +20,9 @@ export function Logo({
 }: LogoProps) {
   // Size mappings
   const sizeMap = {
-    sm: { logo: 24, text: 'text-lg' },
-    md: { logo: 32, text: 'text-xl' },
-    lg: { logo: 48, text: 'text-2xl' }
+    sm: { logo: 48, text: 'text-xl' },
+    md: { logo: 64, text: 'text-2xl' },
+    lg: { logo: 96, text: 'text-3xl' }
   };
 
   // Get dimensions based on size
@@ -46,10 +46,10 @@ export function Logo({
       </div>
 
       {showText && (
-        <div className="relative" style={{ height: dimensions.logo, width: dimensions.logo * 4 }}>
+        <div className="relative" style={{ height: dimensions.logo, width: dimensions.logo * 3 }}>
           <Image
             src="/kinetic-text-logo.svg"
-            alt="Kinetic AI"
+            alt="Kinetic"
             fill
             className="object-contain object-left"
             priority
