@@ -20,52 +20,38 @@ export function Logo({
 }: LogoProps) {
   // Size mappings
   const sizeMap = {
-    sm: { logo: 40, text: 'text-xl' },
-    md: { logo: 50, text: 'text-2xl' },
-    lg: { logo: 60, text: 'text-3xl' }
+    sm: { logo: 32, text: 'text-lg' },
+    md: { logo: 40, text: 'text-xl' },
+    lg: { logo: 48, text: 'text-2xl' }
   };
 
   // Get dimensions based on size
   const dimensions = sizeMap[size];
 
   return (
-    <Link href="/landing" className={cn("flex flex-col items-center", className)}>
-      <div className="flex items-center">
-        <div className="relative" style={{ width: dimensions.logo, height: dimensions.logo }}>
-          <Image
-            src="/kinetic-logo-circle.svg"
-            alt="Kinetic AI"
-            fill
-            className="object-contain"
-            priority
-            onError={(e) => {
-              // Fallback if image fails to load
-              const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
-            }}
-          />
-        </div>
-
-        {showText && (
-          <div className="relative ml-3" style={{ height: dimensions.logo * 0.7, width: dimensions.logo * 2 }}>
-            <Image
-              src="/kinetic-text-logo.svg"
-              alt="Kinetic AI"
-              fill
-              className="object-contain object-left"
-              priority
-            />
-          </div>
-        )}
+    <Link href="/landing" className={cn("flex items-center", className)}>
+      <div className="relative" style={{ width: dimensions.logo, height: dimensions.logo }}>
+        <Image
+          src="/kinetic-logo-circle.svg"
+          alt="Kinetic AI"
+          fill
+          className="object-contain"
+          priority
+          onError={(e) => {
+            // Fallback if image fails to load
+            const target = e.target as HTMLImageElement;
+            target.style.display = 'none';
+          }}
+        />
       </div>
 
       {showText && (
-        <div className="relative mt-1" style={{ height: dimensions.logo * 0.3, width: dimensions.logo }}>
+        <div className="relative ml-3" style={{ height: dimensions.logo * 0.7, width: dimensions.logo * 2 }}>
           <Image
-            src="/kinetic-bottom-text.svg"
-            alt="KINETIC"
+            src="/kinetic-text-logo.svg"
+            alt="Kinetic AI"
             fill
-            className="object-contain"
+            className="object-contain object-left"
             priority
           />
         </div>
