@@ -9,7 +9,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-blue-600 text-white">
+    <footer className="bg-[#0A0E1A] text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and company info */}
@@ -101,7 +101,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-blue-500 mt-12 pt-6 text-center text-blue-200 text-sm">
+        <div className="border-t border-gray-800 mt-12 pt-6 text-center text-gray-500 text-sm">
           © 2024 Exercise Therapy Platform. All rights reserved.
         </div>
       </div>

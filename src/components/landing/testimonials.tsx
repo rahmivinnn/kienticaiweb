@@ -139,11 +139,11 @@ const SuccessStories: React.FC = () => {
   const visibleTestimonials = getVisibleTestimonials();
 
   return (
-    <section className="py-16 bg-blue-50 text-gray-800">
+    <section className="py-16 bg-[#0A0E1A] text-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold mb-2">Success Stories</h2>
-          <p className="text-gray-600">
+          <p className="text-gray-300">
             Hear from patients who transformed their recovery journey
           </p>
         </div>
@@ -164,7 +164,7 @@ const SuccessStories: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="bg-white rounded-xl p-6 shadow-xl"
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-xl"
               >
                 {testimonials.map(testimonial => (
                   testimonial.id === expandedCard && (
@@ -182,7 +182,7 @@ const SuccessStories: React.FC = () => {
 
                       <div className="relative mb-4">
                         <Quote className="absolute -top-2 -left-2 w-6 h-6 text-blue-500 opacity-50 rotate-180" />
-                        <p className="text-lg text-gray-700 pl-6 pr-6 leading-relaxed">
+                        <p className="text-lg text-white pl-6 pr-6 leading-relaxed">
                           {testimonial.fullContent || testimonial.content}
                         </p>
                         <Quote className="absolute -bottom-2 -right-2 w-6 h-6 text-blue-500 opacity-50" />
@@ -222,8 +222,8 @@ const SuccessStories: React.FC = () => {
                         scale: 0.9
                       }}
                       transition={{ duration: 0.4 }}
-                      className={`bg-white rounded-lg p-5 shadow-md border border-gray-100 cursor-pointer
-                        hover:bg-blue-50/50 transition-all duration-300 flex flex-col`}
+                      className={`bg-white/5 backdrop-blur-sm rounded-lg p-5 shadow-md border border-white/10 cursor-pointer
+                        hover:bg-white/10 transition-all duration-300 flex flex-col`}
                       onClick={() => toggleExpandCard(testimonial.id)}
                       whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.1)" }}
                     >
@@ -238,7 +238,7 @@ const SuccessStories: React.FC = () => {
                         </div>
                       </div>
 
-                      <p className="text-sm text-gray-600 flex-grow">
+                      <p className="text-sm text-gray-300 flex-grow">
                         "{testimonial.content}"
                       </p>
 
@@ -258,7 +258,7 @@ const SuccessStories: React.FC = () => {
               <Button
                 variant="outline"
                 size="icon"
-                className="rounded-full border-gray-200 text-gray-700 hover:bg-blue-50"
+                className="rounded-full border-white/20 text-white hover:bg-white/10"
                 onClick={prevTestimonial}
                 aria-label="Previous testimonial"
               >
@@ -273,7 +273,7 @@ const SuccessStories: React.FC = () => {
                     className={`w-2 h-2 rounded-full transition-all ${
                       index === activeIndex
                         ? 'bg-blue-500 w-4'
-                        : 'bg-gray-300 hover:bg-gray-400'
+                        : 'bg-white/30 hover:bg-white/50'
                     }`}
                     onClick={() => {
                       setActiveIndex(index);
@@ -287,7 +287,7 @@ const SuccessStories: React.FC = () => {
               <Button
                 variant="outline"
                 size="icon"
-                className="rounded-full border-gray-200 text-gray-700 hover:bg-blue-50"
+                className="rounded-full border-white/20 text-white hover:bg-white/10"
                 onClick={nextTestimonial}
                 aria-label="Next testimonial"
               >

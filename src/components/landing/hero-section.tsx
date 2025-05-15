@@ -45,7 +45,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   return (
-    <section className="relative overflow-hidden bg-blue-600 py-16 md:py-24">
+    <section className="relative overflow-hidden bg-[#0A0E1A] py-16 md:py-24">
       {/* Background pattern - removed for cleaner look */}
 
       {/* Content container */}
