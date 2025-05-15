@@ -55,76 +55,186 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-[#F0F4FA] flex">
       <DashboardSidebar />
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden ml-[60px]">
         <DashboardHeader user={user} onLogout={handleLogout} />
         <main className="flex-1 overflow-y-auto p-4 md:p-6">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
+            <h1 className="text-2xl font-bold mb-2">Welcome back, {user?.firstName || 'Sarah'}</h1>
+            <h2 className="text-lg text-gray-600 mb-6">Today's Overview</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <Card>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">Today's Exercises</CardTitle>
-                  <CardDescription>Your scheduled exercises for today</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-2xl font-bold">3 exercises</p>
-                  <Button className="mt-4 w-full">View Exercises</Button>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">Progress</CardTitle>
-                  <CardDescription>Your recovery progress</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-2xl font-bold">68%</p>
-                  <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2 mb-4">
-                    <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '68%' }}></div>
+                  <div className="flex items-center mb-2">
+                    <div className="w-6 h-6 mr-2 flex items-center justify-center">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 2V5" stroke="#000000" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M16 2V5" stroke="#000000" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M3.5 9.09H20.5" stroke="#000000" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="#000000" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <span className="font-medium">UPCOMING</span>
                   </div>
-                  <Button className="mt-2 w-full">View Details</Button>
+                  <CardTitle className="text-lg">Next Appointment</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600">Today at 2:30 PM with Dr. Johnson</p>
+                  <div className="flex mt-4 space-x-2">
+                    <Button size="sm" className="bg-black text-white hover:bg-gray-800">Join Call</Button>
+                    <Button size="sm" variant="outline" className="border-gray-300">Reschedule</Button>
+                  </div>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">Next Appointment</CardTitle>
-                  <CardDescription>Your upcoming session</CardDescription>
+                  <div className="flex items-center mb-2">
+                    <div className="w-6 h-6 mr-2 flex items-center justify-center">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M7.75 12L10.58 14.83L16.25 9.17" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <span className="font-medium">EXERCISES</span>
+                  </div>
+                  <CardTitle className="text-lg">Daily Plan</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-2xl font-bold">Tomorrow, 2:00 PM</p>
-                  <Button className="mt-4 w-full">Join Session</Button>
+                  <p className="text-sm text-gray-600">3 of 5 exercises completed</p>
+                  <div className="flex mt-4 space-x-2">
+                    <Button size="sm" className="bg-black text-white hover:bg-gray-800">Continue</Button>
+                    <Button size="sm" variant="outline" className="border-gray-300">View All</Button>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="pb-2">
+                  <div className="flex items-center mb-2">
+                    <div className="w-6 h-6 mr-2 flex items-center justify-center">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.88 18.15V16.08" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"/>
+                        <path d="M12 18.15V14.01" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"/>
+                        <path d="M17.12 18.15V11.93" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"/>
+                        <path d="M17.12 5.85V5.85" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"/>
+                        <path d="M6.88 10.77V5.85" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"/>
+                        <path d="M12 8.7V5.85" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"/>
+                        <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <span className="font-medium">PROGRESS</span>
+                  </div>
+                  <CardTitle className="text-lg">Recovery Status</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600">70% improvement since last assessment</p>
+                  <div className="w-full bg-gray-200 rounded-full h-2 mt-3 mb-4">
+                    <div className="bg-blue-600 h-2 rounded-full" style={{ width: '70%' }}></div>
+                  </div>
+                  <Button size="sm" variant="outline" className="mt-1 border-gray-300">View Details</Button>
                 </CardContent>
               </Card>
             </div>
 
-            <Card className="mb-6">
-              <CardHeader>
-                <CardTitle>Recent Activity</CardTitle>
-                <CardDescription>Your latest exercises and progress</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="flex items-center p-3 bg-gray-50 rounded-lg">
-                      <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
-                        <span className="text-blue-600 font-bold">{i}</span>
-                      </div>
-                      <div>
-                        <h3 className="font-medium">Completed Exercise {i}</h3>
-                        <p className="text-sm text-gray-500">{i} day{i > 1 ? 's' : ''} ago</p>
-                      </div>
-                      <div className="ml-auto">
-                        <span className="text-green-600 font-medium">+{i * 5} points</span>
+            <div className="mb-8">
+              <h2 className="text-lg font-semibold mb-4">Submit New Video</h2>
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="space-y-4">
+                    <div>
+                      <Label htmlFor="exerciseType">Exercise Type</Label>
+                      <div className="relative mt-1">
+                        <select
+                          id="exerciseType"
+                          className="w-full p-2 pr-10 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+                          <option value="">Select exercise from your plan</option>
+                          <option value="knee">Knee Flexion</option>
+                          <option value="shoulder">Shoulder Rotation</option>
+                          <option value="ankle">Ankle Mobility</option>
+                        </select>
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                          <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </div>
                       </div>
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                    <div>
+                      <Label htmlFor="notes">Notes for your physiotherapist</Label>
+                      <textarea
+                        id="notes"
+                        className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        rows={3}
+                        placeholder="Describe any pain or difficulties you experienced"
+                      ></textarea>
+                    </div>
+                    <Button className="bg-black text-white hover:bg-gray-800">
+                      Upload Video
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="mb-8">
+              <h2 className="text-lg font-semibold mb-4">Recent Activity</h2>
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="space-y-4">
+                    <div className="flex items-start">
+                      <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4 mt-1">
+                        <BarChart2 className="h-4 w-4 text-blue-600" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex justify-between">
+                          <h3 className="font-medium">AI Analysis Complete</h3>
+                          <button className="text-gray-400">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.91003 19.9201L15.43 13.4001C16.2 12.6301 16.2 11.3701 15.43 10.6001L8.91003 4.08008" stroke="#292D32" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </button>
+                        </div>
+                        <p className="text-sm text-gray-500">Your video from 10th has been analyzed</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start">
+                      <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-4 mt-1">
+                        <MessageSquare className="h-4 w-4 text-green-600" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex justify-between">
+                          <h3 className="font-medium">New Message</h3>
+                          <button className="text-gray-400">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.91003 19.9201L15.43 13.4001C16.2 12.6301 16.2 11.3701 15.43 10.6001L8.91003 4.08008" stroke="#292D32" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </button>
+                        </div>
+                        <p className="text-sm text-gray-500">Dr. Johnson: "Great progress on your knee exercises!"</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="mb-8">
+              <h2 className="text-lg font-semibold mb-4">Weekly Progress</h2>
+              <Card>
+                <CardContent className="pt-6">
+                  <h3 className="font-medium mb-3">Movement Analysis</h3>
+                  <p className="text-sm text-gray-600 mb-4">
+                    Your range of motion has improved by 15% this week. The AI model has detected better form in your knee exercises.
+                  </p>
+                  <Button variant="outline" className="border-gray-300">View Detailed Report</Button>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </main>
       </div>
