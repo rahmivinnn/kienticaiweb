@@ -45,11 +45,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#0A0E1A] py-20 md:py-32">
-      {/* Background pattern */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-repeat"></div>
-      </div>
+    <section className="relative overflow-hidden bg-[#0A0E1A] py-16 md:py-24">
+      {/* Background pattern - removed for cleaner look */}
 
       {/* Content container */}
       <div className="container mx-auto px-4 relative z-10">
@@ -62,9 +59,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             className="text-center lg:text-left"
           >
             <motion.div variants={itemVariants}>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-                Personalized Recovery<br />
-                Powered By Movement<br />
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+                Personalized<br />
+                Recovery<br />
+                Powered By<br />
+                Movement<br />
                 Intelligence
               </h1>
             </motion.div>
@@ -98,7 +97,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             </motion.div>
           </motion.div>
 
-          {/* Image/Illustration */}
+          {/* Image/Illustration - simplified to match design */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{
@@ -106,51 +105,34 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               scale: imageLoaded ? 1 : 0.9
             }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative hidden lg:block"
           >
-            <div className="relative aspect-[4/3] max-w-lg mx-auto rounded-xl overflow-hidden shadow-2xl bg-[#F0E7FF]">
+            <div className="relative w-full h-[400px]">
               <LazyImage
                 src="/rehabilitation-scene.jpg"
                 alt="Smart Rehabilitation Ecosystem"
                 fill
-                className="object-cover"
+                className="object-contain"
                 onLoadingComplete={() => setImageLoaded(true)}
                 onLoadingError={() => setImageLoaded(true)}
                 loadingComponent={
                   <div className="flex flex-col items-center justify-center h-full">
                     <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-                    <p className="text-gray-600 text-sm">Loading image...</p>
+                    <p className="text-gray-400 text-sm">Loading image...</p>
                   </div>
                 }
               />
 
               {/* Fallback if image doesn't exist */}
               {!imageLoaded && (
-                <div className="absolute inset-0 flex items-center justify-center bg-[#F0E7FF]">
+                <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <div className="text-6xl mb-4">🏥</div>
-                    <div className="text-xl font-medium text-gray-700">Rehabilitation Scene</div>
+                    <div className="text-xl font-medium text-gray-300">Rehabilitation Scene</div>
                   </div>
                 </div>
               )}
             </div>
-
-            {/* Second image below */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: imageLoaded ? 1 : 0, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="relative mt-4 aspect-[16/5] max-w-lg mx-auto rounded-xl overflow-hidden shadow-lg bg-gray-200"
-            >
-              <LazyImage
-                src="/medical-equipment.jpg"
-                alt="Medical Equipment"
-                fill
-                className="object-cover"
-                onLoadingComplete={() => setImageLoaded(true)}
-                onLoadingError={() => setImageLoaded(true)}
-              />
-            </motion.div>
           </motion.div>
         </div>
       </div>

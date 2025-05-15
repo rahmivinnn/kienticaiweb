@@ -91,7 +91,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Logo
-            variant={isScrolled ? 'default' : 'white'}
+            variant="white"
             size="md"
           />
 

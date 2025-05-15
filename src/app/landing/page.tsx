@@ -3,11 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import HeroSection from '@/components/landing/hero-section';
-import FeaturesSection from '@/components/landing/features-section';
 import NavigationMenu from '@/components/landing/navigation-menu';
-import Testimonials from '@/components/landing/testimonials';
-import CTASection from '@/components/landing/cta-section';
 import RehabilitationEcosystem from '@/components/landing/rehabilitation-ecosystem';
+import HowItWorks from '@/components/landing/how-it-works';
+import ForPractitioners from '@/components/landing/for-practitioners';
+import SuccessStories from '@/components/landing/testimonials';
+import RecoveryJourneyCTA from '@/components/landing/recovery-journey-cta';
+import Footer from '@/components/landing/footer';
 import { AuthModal } from '@/components/landing/auth-modal';
 import { TransitionContainer } from '@/components/ui/transition-container';
 import { useAuth } from '@/contexts/auth-context';
@@ -94,17 +96,14 @@ export default function LandingPage() {
             onWatchDemoClick={() => {/* Video modal is handled internally */}}
           />
           <RehabilitationEcosystem />
-          <FeaturesSection />
-          <Testimonials />
-          <CTASection onSignUpClick={() => openAuthModal('register')} />
+          <HowItWorks />
+          <ForPractitioners />
+          <SuccessStories />
+          <RecoveryJourneyCTA onBeginJourneyClick={() => openAuthModal('register')} />
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-white/10 py-6 bg-[#0A0E1A]">
-          <div className="container mx-auto text-center text-sm text-gray-400">
-            <p>© {new Date().getFullYear()} Kinetic AI. All rights reserved.</p>
-          </div>
-        </footer>
+        <Footer />
 
         {/* Auth Modal */}
         <AuthModal
