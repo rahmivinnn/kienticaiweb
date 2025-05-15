@@ -46,10 +46,10 @@ export function Logo({
       </div>
 
       {showText && (
-        <div className="relative" style={{ height: dimensions.logo, width: dimensions.logo * 3 }}>
+        <div className="relative" style={{ height: dimensions.logo, width: dimensions.logo * 4 }}>
           <Image
             src="/kinetic-text-logo.svg"
-            alt="Kinetic"
+            alt="Kinetic AI"
             fill
             className="object-contain object-left"
             priority
