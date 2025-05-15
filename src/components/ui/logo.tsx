@@ -20,38 +20,52 @@ export function Logo({
 }: LogoProps) {
   // Size mappings
   const sizeMap = {
-    sm: { logo: 48, text: 'text-xl' },
-    md: { logo: 64, text: 'text-2xl' },
-    lg: { logo: 96, text: 'text-3xl' }
+    sm: { logo: 40, text: 'text-xl' },
+    md: { logo: 50, text: 'text-2xl' },
+    lg: { logo: 60, text: 'text-3xl' }
   };
 
   // Get dimensions based on size
   const dimensions = sizeMap[size];
 
   return (
-    <Link href="/landing" className={cn("flex items-center", className)}>
-      <div className="relative mr-2" style={{ width: dimensions.logo, height: dimensions.logo }}>
-        <Image
-          src="/kinetic-logo-circle.svg"
-          alt="Kinetic AI"
-          fill
-          className="object-contain"
-          priority
-          onError={(e) => {
-            // Fallback if image fails to load
-            const target = e.target as HTMLImageElement;
-            target.style.display = 'none';
-          }}
-        />
+    <Link href="/landing" className={cn("flex flex-col items-center", className)}>
+      <div className="flex items-center">
+        <div className="relative" style={{ width: dimensions.logo, height: dimensions.logo }}>
+          <Image
+            src="/kinetic-logo-circle.svg"
+            alt="Kinetic AI"
+            fill
+            className="object-contain"
+            priority
+            onError={(e) => {
+              // Fallback if image fails to load
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+            }}
+          />
+        </div>
+
+        {showText && (
+          <div className="relative ml-3" style={{ height: dimensions.logo * 0.7, width: dimensions.logo * 2 }}>
+            <Image
+              src="/kinetic-text-logo.svg"
+              alt="Kinetic AI"
+              fill
+              className="object-contain object-left"
+              priority
+            />
+          </div>
+        )}
       </div>
 
       {showText && (
-        <div className="relative" style={{ height: dimensions.logo, width: dimensions.logo * 4 }}>
+        <div className="relative mt-1" style={{ height: dimensions.logo * 0.3, width: dimensions.logo }}>
           <Image
-            src="/kinetic-text-logo.svg"
-            alt="Kinetic AI"
+            src="/kinetic-bottom-text.svg"
+            alt="KINETIC"
             fill
-            className="object-contain object-left"
+            className="object-contain"
             priority
           />
         </div>

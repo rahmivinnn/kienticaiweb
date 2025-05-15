@@ -93,7 +93,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
           <Logo
             variant="white"
             size="md"
-            className="scale-110"
+            className="scale-100"
           />
 
           {/* Desktop Navigation */}
