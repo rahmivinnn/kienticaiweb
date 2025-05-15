@@ -7,6 +7,7 @@ import FeaturesSection from '@/components/landing/features-section';
 import NavigationMenu from '@/components/landing/navigation-menu';
 import Testimonials from '@/components/landing/testimonials';
 import CTASection from '@/components/landing/cta-section';
+import RehabilitationEcosystem from '@/components/landing/rehabilitation-ecosystem';
 import { AuthModal } from '@/components/landing/auth-modal';
 import { TransitionContainer } from '@/components/ui/transition-container';
 import { useAuth } from '@/contexts/auth-context';
@@ -79,7 +80,7 @@ export default function LandingPage() {
 
   return (
     <TransitionContainer isTransitioning={isTransitioning}>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col landing-page">
         {/* Navigation */}
         <NavigationMenu
           onSignInClick={() => openAuthModal('login')}
@@ -90,16 +91,17 @@ export default function LandingPage() {
         <main className="flex-1">
           <HeroSection
             onGetStartedClick={() => openAuthModal('register')}
-            onWatchDemoClick={() => {/* Implement demo video modal */}}
+            onWatchDemoClick={() => {/* Video modal is handled internally */}}
           />
+          <RehabilitationEcosystem />
           <FeaturesSection />
           <Testimonials />
           <CTASection onSignUpClick={() => openAuthModal('register')} />
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-border py-6 bg-muted/50">
-          <div className="container mx-auto text-center text-sm text-muted-foreground">
+        <footer className="border-t border-white/10 py-6 bg-[#0A0E1A]">
+          <div className="container mx-auto text-center text-sm text-gray-400">
             <p>© {new Date().getFullYear()} Kinetic AI. All rights reserved.</p>
           </div>
         </footer>

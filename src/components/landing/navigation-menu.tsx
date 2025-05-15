@@ -57,17 +57,16 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
 
   // Navigation items
   const navItems = [
-    { name: 'Home', href: '/landing', icon: <Home className="h-4 w-4 mr-2" /> },
-    { name: 'How It Works', href: '#how-it-works', icon: <Activity className="h-4 w-4 mr-2" /> },
-    { name: 'About', href: '#about', icon: <Info className="h-4 w-4 mr-2" /> },
-    { name: 'Blog', href: '#blog', icon: <FileText className="h-4 w-4 mr-2" /> },
-    { name: 'Contact', href: '#contact', icon: <Phone className="h-4 w-4 mr-2" /> },
+    { name: 'Features', href: '#features', icon: <Activity className="h-4 w-4 mr-2" /> },
+    { name: 'How It Works', href: '#how-it-works', icon: <Info className="h-4 w-4 mr-2" /> },
+    { name: 'Success Stories', href: '#success-stories', icon: <FileText className="h-4 w-4 mr-2" /> },
+    { name: 'Resources', href: '#resources', icon: <Phone className="h-4 w-4 mr-2" /> },
   ];
 
   // Features submenu items
   const featuresItems = [
-    { name: 'Pose Detection', href: '#pose-detection' },
-    { name: 'Movement Analysis', href: '#movement-analysis' },
+    { name: 'Movement Intelligence', href: '#movement-intelligence' },
+    { name: 'Responsive Therapy Plans', href: '#responsive-therapy' },
     { name: 'Progress Tracking', href: '#progress-tracking' },
     { name: 'AI Feedback', href: '#ai-feedback' },
   ];
@@ -75,8 +74,8 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
   // Resources submenu items
   const resourcesItems = [
     { name: 'Documentation', href: '#documentation' },
-    { name: 'API', href: '#api' },
-    { name: 'Community', href: '#community' },
+    { name: 'Research', href: '#research' },
+    { name: 'For Clinicians', href: '#for-clinicians' },
     { name: 'Support', href: '#support' },
   ];
 
@@ -84,8 +83,8 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm'
-          : 'bg-transparent'
+          ? 'bg-[#0A0E1A]/95 backdrop-blur-md shadow-sm'
+          : 'bg-[#0A0E1A]'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -104,8 +103,8 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                 href={item.href}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isScrolled
-                    ? 'text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-                    : 'text-blue-100 hover:text-white hover:bg-white/10'
+                    ? 'text-white hover:text-blue-300'
+                    : 'text-white hover:text-blue-300'
                 }`}
                 onClick={closeMenu}
               >
@@ -205,14 +204,14 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
             <Button
               variant="ghost"
               size="sm"
-              className={isScrolled ? '' : 'text-white hover:bg-white/10'}
+              className="text-white hover:text-blue-300"
               onClick={onSignInClick}
             >
-              <LogIn className="h-4 w-4 mr-2" />
               Sign In
             </Button>
             <Button
               size="sm"
+              className="bg-blue-500 hover:bg-blue-600 text-white"
               onClick={onSignUpClick}
             >
               Sign Up
@@ -225,7 +224,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
               variant="ghost"
               size="sm"
               onClick={toggleMenu}
-              className={isScrolled ? '' : 'text-white hover:bg-white/10'}
+              className="text-white hover:bg-white/10"
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -241,7 +240,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white dark:bg-slate-900 shadow-lg"
+            className="md:hidden bg-[#0A0E1A] shadow-lg"
           >
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col space-y-2">
@@ -249,7 +248,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                    className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-white/10"
                     onClick={closeMenu}
                   >
                     {item.icon}
@@ -260,7 +259,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                 {/* Mobile Features Dropdown */}
                 <div>
                   <button
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-white/10"
                     onClick={() => setFeaturesOpen(!featuresOpen)}
                   >
                     <span className="flex items-center">
@@ -297,7 +296,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                 {/* Mobile Resources Dropdown */}
                 <div>
                   <button
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-white/10"
                     onClick={() => setResourcesOpen(!resourcesOpen)}
                   >
                     <span className="flex items-center">
@@ -332,22 +331,21 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                 </div>
 
                 {/* Mobile Auth Buttons */}
-                <div className="pt-2 mt-2 border-t border-slate-200 dark:border-slate-700 flex flex-col space-y-2">
+                <div className="pt-2 mt-2 border-t border-white/20 flex flex-col space-y-2">
                   <Button
-                    variant="outline"
+                    variant="ghost"
                     size="sm"
-                    className="justify-start"
+                    className="justify-start text-white hover:text-blue-300"
                     onClick={() => {
                       onSignInClick();
                       closeMenu();
                     }}
                   >
-                    <LogIn className="h-4 w-4 mr-2" />
                     Sign In
                   </Button>
                   <Button
                     size="sm"
-                    className="justify-start"
+                    className="justify-start bg-blue-500 hover:bg-blue-600 text-white"
                     onClick={() => {
                       onSignUpClick();
                       closeMenu();
