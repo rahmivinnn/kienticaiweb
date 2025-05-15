@@ -13,7 +13,7 @@ const RecoveryJourneyCTA: React.FC<RecoveryJourneyCTAProps> = ({
   onBeginJourneyClick
 }) => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-blue-50">
       <div className="container mx-auto px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,12 +25,12 @@ const RecoveryJourneyCTA: React.FC<RecoveryJourneyCTAProps> = ({
           <p className="text-gray-600 max-w-2xl mx-auto mb-8">
             Join thousands of patients who have successfully recovered using our platform
           </p>
-          
+
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button 
+            <Button
               size="lg"
               className="bg-blue-500 hover:bg-blue-600 text-white px-8"
               onClick={onBeginJourneyClick}

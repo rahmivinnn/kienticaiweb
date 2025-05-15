@@ -82,7 +82,7 @@ export default function LandingPage() {
 
   return (
     <TransitionContainer isTransitioning={isTransitioning}>
-      <div className="min-h-screen flex flex-col landing-page">
+      <div className="min-h-screen flex flex-col">
         {/* Navigation */}
         <NavigationMenu
           onSignInClick={() => openAuthModal('login')}

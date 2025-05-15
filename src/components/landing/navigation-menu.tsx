@@ -83,8 +83,8 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0A0E1A]/95 backdrop-blur-md shadow-sm'
-          : 'bg-[#0A0E1A]'
+          ? 'bg-blue-600/95 backdrop-blur-md shadow-sm'
+          : 'bg-blue-600'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -240,7 +240,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#0A0E1A] shadow-lg"
+            className="md:hidden bg-blue-600 shadow-lg"
           >
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col space-y-2">

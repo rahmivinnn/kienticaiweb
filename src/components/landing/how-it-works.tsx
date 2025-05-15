@@ -31,23 +31,23 @@ const Step: React.FC<StepProps> = ({ number, title, description }) => {
 
 const HowItWorks = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-blue-50">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <Step 
-            number={1} 
-            title="Initial Assessment" 
-            description="Complete a comprehensive evaluation of your condition and goals" 
+          <Step
+            number={1}
+            title="Initial Assessment"
+            description="Complete a comprehensive evaluation of your condition and goals"
           />
-          <Step 
-            number={2} 
-            title="Personalized Plan" 
-            description="Receive a customized therapy program tailored to your needs" 
+          <Step
+            number={2}
+            title="Personalized Plan"
+            description="Receive a customized therapy program tailored to your needs"
           />
-          <Step 
-            number={3} 
-            title="Track Progress" 
-            description="Monitor your improvements with detailed analytics and feedback" 
+          <Step
+            number={3}
+            title="Track Progress"
+            description="Monitor your improvements with detailed analytics and feedback"
           />
         </div>
       </div>
